@@ -126,6 +126,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 50,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
@@ -147,3 +149,20 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+# 登录授权
+# request.user request.auth
+# import django
+# from django.contrib import auth
+
+"""
+1. 使用Django manage.py生成Token
+2. 通过Django的信号机制生成Token
+"""
+
+# 用户权限
+# from rest_framework.permissions import \
+#     IsAuthenticatedOrReadOnly, \
+#     IsAuthenticated, \
+#     IsAdminUser, \
+#     AllowAny
